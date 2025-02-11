@@ -19,21 +19,25 @@
         #styledcontainer {
             height: 70vh;
         }
-        .styles{
+
+        .styles {
             transition: all 0.5s;
             border: 2px solid black;
         }
-        .styles>span{
-            border: 2px solid red ;
+
+        .styles>span {
+            border: 2px solid red;
             transition: all 0.5s;
         }
-        .styles:hover{
+
+        .styles:hover {
             transform: scaleY(1.05);
         }
-        .styles>span:hover{
+
+        .styles>span:hover {
             background-color: yellow !important;
             color: black !important;
-            transform: scale(0.5) ;
+            transform: scale(0.5);
         }
     </style>
 </head>
@@ -67,24 +71,28 @@
             <button class="btn btn-primary rounded-pill mb-2" id="change-btn">ChangeColor</button>
             <div class="row text-center align-content-center justify-content-center gap-2">
                 <div class="col align-content-center rounded-4 w-75 styles" style="height:73vh !important;" id="cont-1">
-                    <span class="bg-light-subtle py-3 px-4 rounded-pill text-danger" id="btn-1"></span>
+                    <span role="button" class=" bg-light-subtle py-3 px-4 rounded-pill text-danger" id="btn-1"></span>
                 </div>
-                <div class="col align-content-center rounded-4 w-75 d-none d-sm-block styles" style="height:73vh !important;"
-                    id="cont-2">
+                <div class="col align-content-center rounded-4 w-75 d-none d-sm-block styles"
+                    style="height:73vh !important;" id="cont-2">
                     <span class="bg-light-subtle py-3 px-4 rounded-pill text-danger" id="btn-2">check</span>
                 </div>
-                <div class="col align-content-center rounded-4 w-75 d-none d-md-block styles" style="height:73vh !important;"
-                    id="cont-3">
+                <div class="col align-content-center rounded-4 w-75 d-none d-md-block styles"
+                    style="height:73vh !important;" id="cont-3">
                     <span class="bg-light-subtle py-3 px-4 rounded-pill text-danger" id="btn-3">check</span>
                 </div>
-                <div class="col align-content-center rounded-4 w-75 d-none d-lg-block styles" style="height:73vh !important;"
-                    id="cont-4">
+                <div class="col align-content-center rounded-4 w-75 d-none d-lg-block styles"
+                    style="height:73vh !important;" id="cont-4">
                     <span class="bg-light-subtle py-3 px-4 rounded-pill text-danger" id="btn-4">check</span>
                 </div>
             </div>
         </div>
     </section>
     <script>
+        let btn_1 = document.getElementById('btn-1') 
+        let btn_2 = document.getElementById('btn-2') 
+        let btn_3 = document.getElementById('btn-3') 
+        let btn_4 = document.getElementById('btn-4') 
         const color = () => {
             let hexcode = "#"
             let colorsec = "0123456789abcdef"
@@ -98,44 +106,51 @@
         clr3 = color();
         clr4 = color();
         document.getElementById('cont-1').style.background = clr1;
-        document.getElementById('btn-1').innerText = clr1;
+        btn_1.innerText = clr1;
         document.getElementById('cont-2').style.background = clr2;
-        document.getElementById('btn-2').innerText = clr2;
+        btn_2.innerText = clr2;
         document.getElementById('cont-3').style.background = clr3;
-        document.getElementById('btn-3').innerText = clr3;
+        btn_3.innerText = clr3;
         document.getElementById('cont-4').style.background = clr4;
-        document.getElementById('btn-4').innerText = clr4;
+        btn_4.innerText = clr4;
 
-        colorchange = () => {
+        const colorchange = () => {
             clr1 = color();
             clr2 = color();
             clr3 = color();
             clr4 = color();
             document.getElementById('cont-1').style.background = clr1;
-            document.getElementById('btn-1').innerText = clr1;
+            btn_1.innerText = clr1;
             document.getElementById('cont-2').style.background = clr2;
-            document.getElementById('btn-2').innerText = clr2;
+            btn_2.innerText = clr2;
             document.getElementById('cont-3').style.background = clr3;
-            document.getElementById('btn-3').innerText = clr3;
+            btn_3.innerText = clr3;
             document.getElementById('cont-4').style.background = clr4;
-            document.getElementById('btn-4').innerText = clr4;
+            btn_4.innerText = clr4;
         }
 
         document.getElementById('change-btn').addEventListener("click", colorchange);
-
-        let text = clr1;
-        const copyContent = async () => {
-            try {
-                await navigator.clipboard.writeText(text);
-                console.log('Content copied to clipboard');
-            } catch (err) {
-                console.log('Failed to copy: ', err);
-            }
-        }
-        document.getElementById('btn-1').addEventListener("click", copyContent);
-        document.getElementById('btn-2').addEventListener("click", copyContent);
-        document.getElementById('btn-3').addEventListener("click", copyContent);
-        document.getElementById('btn-4').addEventListener("click", copyContent);
+        
+        
+        btn_1.addEventListener("click", (()=>{
+            navigator.clipboard.writeText(clr1);
+            console.log('copied-1')
+        }));
+        btn_2.addEventListener("click", (()=>{
+            navigator.clipboard.writeText(clr2);
+            console.log('copied-2')
+        }));
+        btn_3.addEventListener("click", (()=>{
+            navigator.clipboard.writeText(clr3);
+            console.log('copied-3')
+        }));
+        btn_4.addEventListener("click", (()=>{
+            navigator.clipboard.writeText(clr4);
+            console.log('copied-4')
+        }));
+        // document.getElementById('btn-2').addEventListener("click", copyContent());
+        // document.getElementById('btn-3').addEventListener("click", copyContent());
+        // document.getElementById('btn-4').addEventListener("click", copyContent());
     </script>
 </body>
 
